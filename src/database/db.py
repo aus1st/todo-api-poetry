@@ -1,5 +1,10 @@
+from settings import DB_USER,DB_HOST,DB_NAME,DB_PASSWORD
+from sqlmodel import create_engine, Session, Field, SQLModel, select
 
-import os
-#from dotenv import load_dotenv
+DATABASE_URL = f"postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}/{DB_NAME}"
 
-DB_URI="postgresql://aus1st:Me1K5NJWijTr@ep-dark-scene-148946-pooler.us-east-2.aws.neon.tech/todo_fast?sslmode=require"
+#postgresql://aus1st:************@ep-dark-scene-148946-pooler.us-east-2.aws.neon.tech/employees?sslmode=require
+
+engine = create_engine(DATABASE_URL, connect_args={"sslmode": "require"}, pool_recycle=300)
+
+SessionLocal = sess
