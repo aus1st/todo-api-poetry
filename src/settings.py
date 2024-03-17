@@ -1,1 +1,1 @@
-from startlett.config import config
+from starlette.config import config
